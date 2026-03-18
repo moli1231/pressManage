@@ -1,13 +1,21 @@
 <template>
-  <div class="page-card">
+  <div class="page-card user-page">
     <div class="toolbar">
-      <h3>用户管理</h3>
-      <el-button type="primary" @click="dialogVisible = true">创建用户</el-button>
+      <div>
+        <h2 class="title">账号管理</h2>
+        <p class="sub-title">管理员创建普通用户账号（默认密码可在创建时设置）</p>
+      </div>
+      <el-button class="create-btn" @click="dialogVisible = true">创建用户</el-button>
     </div>
 
-    <el-table :data="users" border style="margin-top: 12px">
+    <el-table :data="users" border style="margin-top: 12px" class="user-table">
       <el-table-column prop="phone" label="手机号" />
-      <el-table-column prop="role" label="角色" width="120" />
+      <el-table-column label="角色" width="120">
+        <template #default="{ row }">
+          <span class="role-pill" :class="row.role">{{ row.role }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="created_at" label="创建时间" min-width="170" />
       <el-table-column label="状态" width="120">
         <template #default="{ row }">
           <el-tag :type="row.is_active ? 'success' : 'danger'">{{ row.is_active ? '启用' : '停用' }}</el-tag>
@@ -85,9 +93,75 @@ onMounted(loadData)
 </script>
 
 <style scoped>
+.user-page {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  color: #111827;
+}
+
+.sub-title {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.create-btn {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.role-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.role-pill.admin,
+.role-pill.super {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+.role-pill.user {
+  color: #4b5563;
+  background: #f9fafb;
+}
+
+.user-table :deep(.el-table__header th) {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.user-table :deep(.el-table td),
+.user-table :deep(.el-table th) {
+  border-color: #e5e7eb;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .sub-title {
+    font-size: 14px;
+  }
 }
 </style>

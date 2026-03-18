@@ -1,12 +1,18 @@
 <template>
   <div class="page-card">
-    <h3>Excel 导入导出</h3>
-    <div style="margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
-      <template v-if="isSuper">
-        <input type="file" accept=".xlsx" @change="onFileChange" />
-        <el-button type="primary" :disabled="!file" @click="importExcel">导入</el-button>
-      </template>
-      <el-button @click="exportExcel">导出</el-button>
+    <h2 class="page-title">Excel 导入导出</h2>
+    <p class="page-subtitle">管理员可导出，超级用户可导入与导出</p>
+
+    <div class="page-toolbar">
+      <div class="toolbar-actions">
+        <template v-if="isSuper">
+          <input type="file" accept=".xlsx" @change="onFileChange" />
+          <el-button class="dark-btn" :disabled="!file" @click="importExcel">导入</el-button>
+        </template>
+      </div>
+      <div class="toolbar-actions">
+        <el-button @click="exportExcel">导出</el-button>
+      </div>
     </div>
 
     <el-alert
@@ -18,7 +24,7 @@
       :closable="false"
     />
 
-    <el-table v-if="result?.errors?.length" :data="result.errors" border style="margin-top: 12px">
+    <el-table v-if="result?.errors?.length" :data="result.errors" border style="margin-top: 12px" class="panel-table">
       <el-table-column prop="row" label="行号" width="100" />
       <el-table-column prop="error" label="错误原因" />
     </el-table>

@@ -1,10 +1,12 @@
 <template>
-  <div class="page-card profile">
-    <h3>修改密码</h3>
-    <el-form :model="form" label-width="100px" style="max-width: 460px; margin-top: 12px">
+  <div class="page-card profile-card">
+    <h2 class="page-title">修改密码</h2>
+    <p class="page-subtitle">为保障账号安全，请定期更换密码</p>
+
+    <el-form :model="form" label-width="100px" class="profile-form">
       <el-form-item label="旧密码"><el-input v-model="form.old_password" type="password" show-password /></el-form-item>
       <el-form-item label="新密码"><el-input v-model="form.new_password" type="password" show-password /></el-form-item>
-      <el-button type="primary" @click="changePassword">保存</el-button>
+      <el-button class="dark-btn" @click="changePassword">保存</el-button>
     </el-form>
   </div>
 </template>
@@ -29,7 +31,12 @@ async function changePassword() {
 </script>
 
 <style scoped>
-.profile {
-  min-height: 240px;
+.profile-card {
+  max-width: 640px;
+}
+
+.profile-form {
+  max-width: 460px;
+  margin-top: 14px;
 }
 </style>

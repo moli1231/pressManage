@@ -2,7 +2,7 @@
   <div class="login-wrap">
     <div class="login-card">
       <h1>压力表管理系统</h1>
-      <p>企业设备与有效期追踪平台</p>
+      <p class="desc">企业设备与有效期追踪平台</p>
       <p class="hint">演示账号：超管 13800000000 / Admin@123，管理员 13900000000 / Admin@123，普通用户 13700000000 / User@123</p>
       <el-form :model="form" @submit.prevent="onSubmit">
         <el-form-item>
@@ -54,30 +54,35 @@ async function onSubmit() {
   display: grid;
   place-items: center;
   padding: 24px;
+  background: #f3f4f6;
 }
 
 .login-card {
-  width: 420px;
+  width: 460px;
   max-width: 100%;
-  padding: 28px;
+  padding: 30px;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 16px 40px rgba(15, 76, 129, 0.15);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.06);
 }
 
 h1 {
-  margin: 0 0 8px;
-  color: #0f4c81;
+  margin: 0;
+  color: #111827;
+  font-size: 24px;
 }
 
-p {
-  margin: 0 0 22px;
-  color: #6f7f8f;
+.desc {
+  margin: 8px 0 18px;
+  color: #6b7280;
+  font-size: 14px;
 }
 
 .hint {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   font-size: 12px;
   line-height: 1.5;
+  color: #6b7280;
 }
 </style>

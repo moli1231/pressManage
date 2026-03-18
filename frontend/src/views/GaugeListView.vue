@@ -1,14 +1,17 @@
 <template>
   <div class="page-card">
-    <div class="toolbar">
-      <el-input v-model="query.keyword" placeholder="按压力表编号搜索" style="width: 260px" @keyup.enter="loadData" />
-      <div>
+    <h2 class="page-title">压力表列表</h2>
+    <p class="page-subtitle">支持查询、新增、编辑、删除与图片管理</p>
+
+    <div class="page-toolbar">
+      <el-input v-model="query.keyword" placeholder="按压力表编号搜索" class="search-input" @keyup.enter="loadData" />
+      <div class="toolbar-actions">
         <el-button @click="loadData">查询</el-button>
-        <el-button v-if="isSuper" type="primary" @click="openCreate">新增压力表</el-button>
+        <el-button v-if="isSuper" class="dark-btn" @click="openCreate">新增压力表</el-button>
       </div>
     </div>
 
-    <el-table :data="list" border style="width: 100%; margin-top: 14px">
+    <el-table :data="list" border style="width: 100%; margin-top: 14px" class="panel-table">
       <el-table-column prop="gauge_code" label="压力表编号" width="150" />
       <el-table-column prop="manufacturer" label="厂商" width="140" />
       <el-table-column prop="serial_no" label="编号" width="140" />
@@ -20,7 +23,7 @@
         <template #default="{ row }">
           <el-image
             v-if="row.entity_photo_path"
-            style="width: 48px; height: 48px; border-radius: 6px"
+            style="width: 44px; height: 44px; border-radius: 6px"
             :src="toFileUrl(row.entity_photo_path)"
             fit="cover"
             :preview-src-list="[toFileUrl(row.entity_photo_path)]"
@@ -33,7 +36,7 @@
         <template #default="{ row }">
           <el-image
             v-if="row.report_photo_path"
-            style="width: 48px; height: 48px; border-radius: 6px"
+            style="width: 44px; height: 44px; border-radius: 6px"
             :src="toFileUrl(row.report_photo_path)"
             fit="cover"
             :preview-src-list="[toFileUrl(row.report_photo_path)]"
@@ -114,7 +117,7 @@
       </el-form>
       <template #footer>
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" :loading="saving" @click="submit">保存</el-button>
+        <el-button class="dark-btn" :loading="saving" @click="submit">保存</el-button>
       </template>
     </el-dialog>
   </div>
@@ -278,10 +281,8 @@ onMounted(loadData)
 </script>
 
 <style scoped>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
+.search-input {
+  width: 280px;
 }
 
 .upload-row {
@@ -294,5 +295,11 @@ onMounted(loadData)
   width: 56px;
   height: 56px;
   border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .search-input {
+    width: 100%;
+  }
 }
 </style>

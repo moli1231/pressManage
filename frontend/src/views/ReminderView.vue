@@ -1,13 +1,18 @@
 <template>
   <div class="page-card">
-    <div class="toolbar">
-      <h3>提醒记录</h3>
-      <el-button type="primary" @click="runNow">立即扫描提醒</el-button>
+    <h2 class="page-title">到期提醒</h2>
+    <p class="page-subtitle">系统记录 30 天和 15 天的提醒触发结果</p>
+
+    <div class="page-toolbar">
+      <div />
+      <div class="toolbar-actions">
+        <el-button class="dark-btn" @click="runNow">立即扫描提醒</el-button>
+      </div>
     </div>
 
-    <el-table :data="items" border style="margin-top: 12px">
+    <el-table :data="items" border style="margin-top: 12px" class="panel-table">
       <el-table-column prop="gauge_id" label="压力表ID" width="120" />
-      <el-table-column prop="reminder_type" label="提醒类型" width="120" />
+      <el-table-column prop="reminder_type" label="提醒类型" width="140" />
       <el-table-column prop="sent_at" label="提醒时间" />
     </el-table>
   </div>
@@ -41,11 +46,3 @@ async function runNow() {
 
 onMounted(loadData)
 </script>
-
-<style scoped>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
