@@ -26,7 +26,7 @@ function seedDb() {
       id: 1,
       gauge_code: 'PG-2026-0001',
       inspection_days: 365,
-      manufacturer: '华东仪表',
+      manufacturer: '一队',
       serial_no: 'SN-E10001',
       location: 'A厂-锅炉房1',
       entity_photo_path: '',
@@ -43,7 +43,7 @@ function seedDb() {
       id: 2,
       gauge_code: 'PG-2026-0002',
       inspection_days: 180,
-      manufacturer: '北方机械',
+      manufacturer: '二队',
       serial_no: 'SN-M20002',
       location: 'B厂-储罐区',
       entity_photo_path: '',
@@ -60,7 +60,7 @@ function seedDb() {
       id: 3,
       gauge_code: 'PG-2026-0003',
       inspection_days: 90,
-      manufacturer: '精工电子',
+      manufacturer: '三队',
       serial_no: 'SN-E30003',
       location: 'C厂-压缩机房',
       entity_photo_path: '',
@@ -370,7 +370,7 @@ export const gaugeApi = {
       id: db.nextGaugeId++,
       gauge_code: code,
       inspection_days: 365,
-      manufacturer: '批量导入(模拟)',
+      manufacturer: '导入队伍(模拟)',
       serial_no: `AUTO-${db.nextGaugeId}`,
       location: '待确认位置',
       entity_photo_path: '',
@@ -393,7 +393,7 @@ export const gaugeApi = {
   async exportExcel() {
     requireRoles(['admin', 'super'])
     const db = loadDb()
-    const header = ['压力表编号', '检测时间(天)', '厂商', '编号', '放置位置', '校准日期', '有效期', '类型']
+    const header = ['压力表编号', '检测时间(天)', '队伍名称', '编号', '放置位置', '校准日期', '有效期', '类型']
     const rows = db.gauges.map((item) => [
       item.gauge_code,
       item.inspection_days,

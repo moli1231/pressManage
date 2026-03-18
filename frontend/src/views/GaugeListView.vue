@@ -13,7 +13,7 @@
 
     <el-table :data="list" border style="width: 100%; margin-top: 14px" class="panel-table">
       <el-table-column prop="gauge_code" label="压力表编号" width="150" />
-      <el-table-column prop="manufacturer" label="厂商" width="140" />
+      <el-table-column prop="manufacturer" label="队伍名称" width="140" />
       <el-table-column prop="serial_no" label="编号" width="140" />
       <el-table-column prop="location" label="放置位置" min-width="160" />
       <el-table-column prop="gauge_type" label="类型" width="120">
@@ -78,7 +78,7 @@
       <el-form :model="form" label-width="120px">
         <el-form-item label="压力表编号"><el-input v-model="form.gauge_code" /></el-form-item>
         <el-form-item label="检测时间(天)"><el-input-number v-model="form.inspection_days" :min="1" /></el-form-item>
-        <el-form-item label="厂商"><el-input v-model="form.manufacturer" /></el-form-item>
+        <el-form-item label="队伍名称"><el-input v-model="form.manufacturer" /></el-form-item>
         <el-form-item label="编号"><el-input v-model="form.serial_no" /></el-form-item>
         <el-form-item label="放置位置"><el-input v-model="form.location" /></el-form-item>
         <el-form-item label="校准日期"><el-date-picker value-format="YYYY-MM-DD" v-model="form.calibration_date" /></el-form-item>

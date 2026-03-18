@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: 压力表管理系统 API
+  title: 采气二厂工艺设备管理系统 API
   version: 1.0.0
 servers:
   - url: /api/v1

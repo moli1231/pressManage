@@ -1,7 +1,7 @@
 <template>
   <div class="admin-shell">
     <header class="topbar">
-      <div class="system-title">压力表管理系统</div>
+      <div class="system-title">采气二厂工艺设备管理系统</div>
       <div class="topbar-right">
         <span class="phone">{{ auth.user?.phone }}</span>
         <button class="text-link" @click="router.push('/profile')">修改密码</button>
