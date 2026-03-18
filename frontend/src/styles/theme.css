@@ -1,0 +1,29 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --primary: #0f4c81;
+  --accent: #1b9aaa;
+  --text: #203040;
+  --muted: #6f7f8f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 0%, #d9e6f5 0%, transparent 45%),
+    radial-gradient(circle at 90% 0%, #c8ebef 0%, transparent 40%),
+    var(--bg);
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.page-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(15, 76, 129, 0.08);
+}

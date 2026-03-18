@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: 压力表管理系统 API
+  version: 1.0.0
+servers:
+  - url: /api/v1
+paths:
+  /health:
+    get:
+      summary: 健康检查
+      responses:
+        '200':
+          description: OK
+  /auth/login:
+    post:
+      summary: 登录
+  /auth/change-password:
+    post:
+      summary: 修改密码
+  /users:
+    get:
+      summary: 用户列表
+    post:
+      summary: 创建用户
+  /users/{id}/status:
+    patch:
+      summary: 更新用户状态
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+  /gauges:
+    get:
+      summary: 压力表分页查询
+    post:
+      summary: 新增压力表
+  /gauges/{id}:
+    get:
+      summary: 压力表详情
+    put:
+      summary: 更新压力表
+    delete:
+      summary: 删除压力表
+  /gauges/import:
+    post:
+      summary: Excel 导入
+  /gauges/export:
+    get:
+      summary: Excel 导出
+  /files/upload:
+    post:
+      summary: 文件上传
+  /reminders/pending:
+    get:
+      summary: 提醒记录
+  /reminders/run:
+    post:
+      summary: 手动触发提醒扫描
